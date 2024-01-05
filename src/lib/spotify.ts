@@ -1,7 +1,7 @@
 async function getAccessToken() {
 
     const base64Buffer = Buffer.from(`${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`).toString("base64")
-    
+
     const payload = {
         method: "POST",
         headers: {
@@ -14,7 +14,7 @@ async function getAccessToken() {
             client_id: process.env.SPOTIFY_CLIENT_ID as string
         })
     }
-    const res = await fetch("https://accounts.spotify.com/api/token",payload)
+    const res = await fetch("https://accounts.spotify.com/api/token", payload)
     return await res.json();
 }
 
@@ -24,6 +24,7 @@ export async function getCurrentPlayback() {
     const { access_token } = await getAccessToken()
 
     const res = await fetch("https://api.spotify.com/v1/me/player", {
+        cache: "no-store",
         method: "GET",
         headers: {
             "Authorization": `Bearer ${access_token}`,
@@ -35,9 +36,7 @@ export async function getCurrentPlayback() {
         throw new Error(res.statusText)
     }
 
-    returnVal =  await res.json()
-
-    console.log(returnVal)
+    returnVal = await res.json()
 
     return returnVal
 }
