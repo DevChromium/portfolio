@@ -15,8 +15,8 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <section className="h-full w-full bg-gray-900/25 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-900/95 flex flex-col gap-4 p-4 max-w-lg">
-        <div className="flex flex-col sm:flex-row gap-4 items-center sm:items-stretch">
+      <section className="h-full w-full bg-zinc-900/25 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-zinc-900/95 flex flex-col gap-4 p-4 max-w-lg">
+        <div className="flex flex-col sm:flex-row gap-4 items-center">
           <Image
             src="/img/headshot.jpg"
             alt="Headshot image"
@@ -24,22 +24,27 @@ export default async function Home() {
             height={100}
             className="rounded-md"
           />
-          <section className="space-y-4">
+          <section className="space-y-2">
             <div>
               <h1 className="font-bold text-2xl">Lucas Pauwels</h1>
               <p>Freelance Software Engineer</p>
             </div>
             <div className="flex gap-2">
-              <button className="bg-gray-950/90 hover:bg-gray-900/90 border border-gray-900/95 h-10 w-10 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm transition-colors ease-in-out">
+              <a className="bg-rose-300 hover:bg-rose-300/90 h-10 w-10 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm transition-colors ease-in-out" href="https://github.com/devchromium" target="_blank">
                 <Github />
-              </button>
-              <button className="bg-gray-950/90 hover:bg-gray-900/90 border border-gray-900/95 h-10 w-10 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm transition-colors ease-in-out">
+              </a>
+              <a className="bg-rose-300 hover:bg-rose-300/90 h-10 w-10 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm transition-colors ease-in-out" href="mailto:contact@devchromium.work">
                 <Mail />
-              </button>
+              </a>
             </div>
           </section>
         </div>
-        {data.is_playing === true && <SpotifyCard data={data.item} />}
+        {data.is_playing === true && (
+          <div>
+            <h3 className="font-bold text-lg">Listening to Spotify</h3>
+            <SpotifyCard data={data} />
+          </div>
+        )}
       </section>
     </main>
   );

@@ -1,3 +1,8 @@
+export interface SpotifyResponse {
+    progress_ms: number
+    item: Item
+}
+
 export interface Item {
     album: Album
     artists: Artist2[]
