@@ -33,11 +33,13 @@ export async function getCurrentPlayback() {
     });
 
     if (!res.ok) {
-        throw new Error(res.statusText)
+        returnVal = {
+            isPlaying: false,
+            item: null
+        }
     }
 
     returnVal = await res.json()
-
 
     return returnVal
 }
