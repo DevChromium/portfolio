@@ -39,7 +39,7 @@ export default async function Home() {
             </div>
           </section>
         </div>
-        {data && <SpotifyCard data={data.item} />}
+        {data.is_playing === true && <SpotifyCard data={data.item} />}
       </section>
     </main>
   );

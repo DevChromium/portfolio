@@ -37,6 +37,7 @@ export async function getCurrentPlayback() {
     }
 
     returnVal = await res.json()
+    console.log(returnVal)
 
     return returnVal
 }
