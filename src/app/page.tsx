@@ -5,17 +5,28 @@ import { getCurrentPlayback } from "@/lib/spotify";
 import { Github, Headphones, Info, Mail } from "lucide-react";
 import Image from "next/image";
 
-import skills from "../../public/json/skills.json"
+import skills from "../../public/json/skills.json";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 
+interface Skills {
+  [key: string]: {
+    name: string;
+    icon: string;
+    proficiency: string;
+  }[];
+}
 
 export default async function Home() {
 
   let data = await getCurrentPlayback();
+  let skillList: Skills = skills
 
   return (
     <main className="min-h-screen grid grid-cols-1 sm:grid-cols-4 sm:grid-rows-6 gap-4 m-8">
-      <Window title="Welcome!" className="col-auto row-auto sm:col-span-2 sm:row-span-3">
+      <Window
+        title="Welcome!"
+        className="col-auto row-auto sm:col-span-2 sm:row-span-3"
+      >
         <div className="flex flex-col sm:flex-row gap-4 px-4">
           <Image
             src="/img/headshot.jpg"
@@ -47,12 +58,12 @@ export default async function Home() {
             <span>About me</span>
           </h3>
           <p>
-            Hey, I&lsquo;m Lucas, a 22 year old software engineer passionate about
-            solving complex problems through elegant code. With 8+ self-taught
-            years of experience, I thrive on innovation and enjoy creating
-            websites and API&lsquo;s. I&lsquo;m driven by the desire to create impactful
-            software and love collaborating in dynamic, diverse teams. Let&lsquo;s
-            build something amazing together!
+            Hey, I&lsquo;m Lucas, a 22 year old software engineer passionate
+            about solving complex problems through elegant code. With 8+
+            self-taught years of experience, I thrive on innovation and enjoy
+            creating websites and API&lsquo;s. I&lsquo;m driven by the desire to
+            create impactful software and love collaborating in dynamic, diverse
+            teams. Let&lsquo;s build something amazing together!
           </p>
           {data.is_playing === true && (
             <>
@@ -84,10 +95,10 @@ export default async function Home() {
         className="col-auto row-auto sm:col-span-2 sm:row-span-6 sm:col-start-3 sm:row-start-1"
       >
         <div className="p-4 flex flex-col gap-8">
-          {Object.keys(skills).map((key) => (
+          {Object.keys(skillList).map((key) => (
             <div key={key} className="space-y-4">
               <h2 className="capitalize font-bold text-xl">{key}</h2>
-              {skills[key].map((item, index) => (
+              {skillList[key].map((item, index) => (
                 <div
                   key={index}
                   className="inline-flex gap-2 items-center w-full"
@@ -97,7 +108,7 @@ export default async function Home() {
                   </span>
                   <span>{item.proficiency}%</span>
                   <ProgressBar
-                    value={item.proficiency}
+                    value={parseInt(item.proficiency)}
                     className="bg-rose-500"
                   />
                 </div>
