@@ -47,11 +47,11 @@ export default async function Home() {
             <span>About me</span>
           </h3>
           <p>
-            Hey, I'm Lucas, a 22 year old software engineer passionate about
+            Hey, I&lsquo;m Lucas, a 22 year old software engineer passionate about
             solving complex problems through elegant code. With 8+ self-taught
             years of experience, I thrive on innovation and enjoy creating
-            websites and API's. I'm driven by the desire to create impactful
-            software and love collaborating in dynamic, diverse teams. Let's
+            websites and API&lsquo;s. I&lsquo;m driven by the desire to create impactful
+            software and love collaborating in dynamic, diverse teams. Let&lsquo;s
             build something amazing together!
           </p>
           {data.is_playing === true && (
