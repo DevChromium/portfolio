@@ -9,7 +9,8 @@ const nextConfig = {
                 pathname: '/image/*'
             }
         ]
-    }
+    },
+    transpilePackages: ['lucide-react'] // Add this
 }
 
 module.exports = nextConfig

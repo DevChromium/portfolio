@@ -1,22 +1,18 @@
+import { IconButton } from "@/components/ui/IconButton";
 import { SpotifyCard } from "@/components/ui/SpotifyCard";
+import { Window } from "@/components/ui/Window";
 import { getCurrentPlayback } from "@/lib/spotify";
-import { Github, Mail } from "lucide-react";
+import { Github, Headphones, Mail } from "lucide-react";
 import Image from "next/image";
 
 export default async function Home() {
 
-  let data = null
-
-  try {
-    data = await getCurrentPlayback();
-  } catch(error) {
-    console.log(error)
-  }
+  let data = await getCurrentPlayback();
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <section className="h-full w-full bg-zinc-900/25 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-zinc-900/95 flex flex-col gap-4 p-4 max-w-lg">
-        <div className="flex flex-col sm:flex-row gap-4 items-center">
+    <main className="flex min-h-screen items-center justify-center">
+      <Window title="Welcome">
+        <div className="flex flex-col sm:flex-row gap-4 px-4">
           <Image
             src="/img/headshot.jpg"
             alt="Headshot image"
@@ -30,22 +26,26 @@ export default async function Home() {
               <p>Freelance Software Engineer</p>
             </div>
             <div className="flex gap-2">
-              <a className="bg-rose-300 hover:bg-rose-300/90 h-10 w-10 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm transition-colors ease-in-out" href="https://github.com/devchromium" target="_blank">
-                <Github />
-              </a>
-              <a className="bg-rose-300 hover:bg-rose-300/90 h-10 w-10 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm transition-colors ease-in-out" href="mailto:contact@devchromium.work">
-                <Mail />
-              </a>
+              <IconButton
+                href="https://github.com/DevChromium"
+                name={"github"}
+              />
+              <IconButton
+                href="mailto:contact@devchromium.work"
+                name={"mail"}
+              />
             </div>
           </section>
         </div>
         {data.is_playing === true && (
-          <div>
-            <h3 className="font-bold text-lg">Listening to Spotify</h3>
+          <div className="px-4 pb-4">
+            <h3 className="font-medium text-lg inline-flex gap-2 items-center">
+              <Headphones /> Listening to Spotify
+            </h3>
             <SpotifyCard data={data} />
           </div>
         )}
-      </section>
+      </Window>
     </main>
   );
 }
