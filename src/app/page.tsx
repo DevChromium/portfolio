@@ -19,7 +19,7 @@ interface Skills {
 }
 
 export default async function Home() {
-  const songData =await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/spotify`).then(r => r.json())
+  const songData =await fetch(`https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/spotify`).then(r => r.json())
   console.log(songData)
   let skillList: Skills = skills
 
