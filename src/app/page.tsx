@@ -40,7 +40,7 @@ export default async function Home() {
         {data.is_playing === true && (
           <div className="px-4 pb-4">
             <h3 className="font-medium text-lg inline-flex gap-2 items-center">
-              <Headphones /> Listening to Spotify
+              <Image priority src="/spotify.svg" alt="Spotify icon" width={30} height={30} className="text-white" /> Listening to Spotify
             </h3>
             <SpotifyCard data={data} />
           </div>
