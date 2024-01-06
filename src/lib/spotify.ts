@@ -28,24 +28,6 @@ export async function getAccessToken() {
     return json;
 }
 
-// export async function getNowPlaying() {
-//     let returnVal
-
-//     const { access_token } = await getAccessToken()
-
-//     const res = await fetch("https://api.spotify.com/v1/me/player", {
-//         cache: "no-store",
-//         method: "GET",
-//         headers: {
-//             "Authorization": `Bearer ${access_token}`,
-//             "Content-Type": "application/json",
-//         }
-//     });
-
-//     const json = res.json()
-
-//     return res.status === 200 ? json : { is_playing: false}
-// }
 
 export async function getNowPlaying() {
     const { access_token } = await getAccessToken()
