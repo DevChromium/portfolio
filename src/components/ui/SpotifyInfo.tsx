@@ -5,18 +5,27 @@ import { useState } from "react";
 import useSWR from "swr";
 
 export function SpotifyInfo() {
-  const [songData, setSongData] = useState()
-  const { data, error } = useSWR('/api/spotify', (url) => fetch(url).then(r => r.json()).then(data => { setSongData(data); return data; }))
+  const { data, error, mutate } = useSWR("/api/spotify", (url) =>
+    fetch(url)
+      .then((r) => r.json())
+      .then((data) => {
+        return data;
+      })
+  );
+
+  const handleSongFinish = () => {
+    mutate('/api/spotify', { revalidate: true})
+  }
 
   if(error) {
     return <div className="bg-rose-950/50 border border-rose-900/90 rounded-md text-center font-bold py-6 px-4">Error loading in Spotify Data</div>
   }
 
-  if(!data && !songData) {
+  if(!data) {
     return <div className="bg-green-950/50 border border-green-900/90 rounded-md text-center font-bold py-6 px-4">Loading...</div>
   }
 
-  const currentSongData = songData ?? data
+  const currentSongData = data
 
   if(!currentSongData.is_playing) return (
     <div className="bg-rose-950/50 border border-rose-900/90 rounded-md text-center font-bold py-6 px-4">
@@ -37,7 +46,7 @@ export function SpotifyInfo() {
         />{" "}
         Listening to Spotify
       </h3>
-      <SpotifyCard data={currentSongData.data} />
+      <SpotifyCard data={currentSongData.data} onSongFinish={handleSongFinish} />
     </>
   );
 }

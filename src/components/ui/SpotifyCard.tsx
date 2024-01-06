@@ -4,13 +4,13 @@ import { SpotifyResponse } from "@/types/Spotify";
 import Image from "next/image";
 import { ProgressBar } from "./ProgressBar";
 import { useEffect, useState } from "react";
-import { getNowPlaying } from "@/lib/spotify";
 
 interface SpotifyCardProps {
   data: SpotifyResponse;
+  onSongFinish: () => void;
 }
 
-export const SpotifyCard = ({ data }: SpotifyCardProps) => {
+export const SpotifyCard = ({ data, onSongFinish }: SpotifyCardProps) => {
   const [songData, setSongData] = useState(data);
   console.log(songData);
   const [songProgress, setSongProgress] = useState(songData.progress);
@@ -20,6 +20,25 @@ export const SpotifyCard = ({ data }: SpotifyCardProps) => {
 
   const albumCover = songData.album.cover;
   const artists = songData.artists;
+
+  useEffect(() => {
+    let interval: any;
+    if (!isFinished) {
+      interval = setInterval(() => {
+        setSongProgress((prevProgress) => {
+          const newProgress = prevProgress + 1000;
+          if (newProgress >= songData.duration) {
+            setIsFinished(true); // Mark as finished when progress reaches duration
+            onSongFinish();
+            return songData.duration;
+          }
+          return newProgress;
+        });
+      }, 1000);
+    }
+
+    return () => clearInterval(interval); // Clean up the interval on unmount or finish
+  }, [isFinished, songData.duration, onSongFinish]);
 
   return (
     <div
@@ -38,7 +57,11 @@ export const SpotifyCard = ({ data }: SpotifyCardProps) => {
           <section>
             <span className="text-md font-bold inline-flex items-center gap-2">
               {songData.explicit ? <span>&#127348;</span> : <></>}
-              <a className="hover:underline" href={songData.url} target="_blank">
+              <a
+                className="hover:underline"
+                href={songData.url}
+                target="_blank"
+              >
                 {songData.name}
               </a>
             </span>
