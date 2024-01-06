@@ -14,7 +14,10 @@ async function getAccessToken() {
             grant_type: "refresh_token",
             refresh_token: process.env.SPOTIFY_REFRESH_TOKEN as string,
             client_id: process.env.SPOTIFY_CLIENT_ID as string
-        })
+        }),
+        next: {
+            revalidate: 3600
+        }
     }
     const res = await fetch("https://accounts.spotify.com/api/token", payload)
     const json = await res.json()
