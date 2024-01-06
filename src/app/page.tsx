@@ -16,15 +16,15 @@ interface Skills {
   }[];
 }
 
-
-
 export default async function Home() {
-  
   let skillList: Skills = skills;
 
   return (
     <main className="min-h-screen grid grid-cols-1 sm:grid-cols-4 sm:grid-rows-4 gap-4 m-8">
-      <Window title="Welcome!" className="col-auto row-auto sm:col-span-2 justify-between">
+      <Window
+        title="Welcome!"
+        className="col-auto row-auto sm:col-span-2 justify-between"
+      >
         <div className="flex flex-col sm:flex-row gap-4 px-4">
           <Image
             src="/img/headshot.jpg"
@@ -56,9 +56,9 @@ export default async function Home() {
             <span>About me</span>
           </h3>
           <p>
-            Hey, I&lsquo;m Lucas, a {getMyAge()} year old software engineer passionate
-            about solving complex problems through elegant code. With 8+
-            self-taught years of experience, I thrive on innovation and enjoy
+            Hey, I&lsquo;m Lucas, a {getMyAge()} year old software engineer
+            passionate about solving complex problems through elegant code. With
+            8+ self-taught years of experience, I thrive on innovation and enjoy
             creating websites and API&lsquo;s. I&lsquo;m driven by the desire to
             create impactful software and love collaborating in dynamic, diverse
             teams. Let&lsquo;s build something amazing together!
@@ -77,6 +77,9 @@ export default async function Home() {
         title="My Skills"
         className="col-auto row-auto sm:col-span-2 sm:row-span-3 sm:col-start-3 sm:row-start-1 justify-start"
       >
+        <h3 className="mx-4 bg-rose-950/50 border border-rose-900/90 rounded-md text-center font-bold py-6 px-4">
+          Values indicate my proficiency in the skill.
+        </h3>
         <div className="p-4 flex flex-col gap-8">
           {Object.keys(skillList).map((key) => (
             <div key={key} className="space-y-4">

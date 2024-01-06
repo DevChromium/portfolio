@@ -1,7 +1,5 @@
 "use client"
 
-import { FunctionComponent } from "react";
-
 type WindowProps = React.ComponentProps<"div"> & {
     title: string
 }

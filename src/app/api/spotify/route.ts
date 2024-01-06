@@ -1,4 +1,5 @@
 import { getNowPlaying } from "@/lib/spotify";
+import { SpotifyResponse } from "@/types/Spotify";
 import { NextRequest, NextResponse } from "next/server";
 
 export const dynamic = 'force-dynamic'
@@ -8,7 +9,7 @@ export async function GET(req: NextRequest) {
     const response = await getNowPlaying()
     const { is_playing, item, progress_ms } = await response.json()
 
-    const data = {
+    const data: SpotifyResponse = {
         album: {
             name: item.album.name,
             cover: item.album.images[0].url,
@@ -26,7 +27,6 @@ export async function GET(req: NextRequest) {
         duration: item.duration_ms,
         explicit: item.explicit
     }
-    
 
     return NextResponse.json({
         is_playing,
