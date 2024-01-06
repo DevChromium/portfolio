@@ -15,12 +15,12 @@ async function getAccessToken() {
             refresh_token: process.env.SPOTIFY_REFRESH_TOKEN as string,
             client_id: process.env.SPOTIFY_CLIENT_ID as string
         }),
-        cache: "no-store",
+        
         next: {
             revalidate: 3600
         }
     }
-    const res = await fetch("https://accounts.spotify.com/api/token", payload)
+    const res = await fetch("https://accounts.spotify.com/api/token", {cache: "no-store", ...payload})
     const json = await res.json()
     return json;
 }
