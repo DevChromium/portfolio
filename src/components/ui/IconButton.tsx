@@ -13,7 +13,7 @@ export const IconButton = ({name, href, ...props}: IconButtonProps) => {
 
     return (
       <a
-        className="bg-rose-400 hover:bg-rose-400/90 h-10 w-10 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm transition-colors ease-in-out"
+        className="bg-rose-500 hover:bg-rose-500/90 h-10 w-10 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm transition-colors ease-in-out"
         href={href}
         target="_blank"
       >

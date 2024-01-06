@@ -1,7 +1,10 @@
+"use client"
+
 import { msToTime } from "@/lib/converters";
 import { SpotifyResponse } from "@/types/Spotify";
 import Image from "next/image";
 import { ProgressBar } from "./ProgressBar";
+import { useEffect, useState } from "react";
 
 interface SpotifyCardProps {
   data: SpotifyResponse;
@@ -11,7 +14,22 @@ export const SpotifyCard = ({ data }: SpotifyCardProps) => {
   const albumCover = data.item.album.images[0].url;
   const artists = data.item.artists;
 
-  const progress = (data.progress_ms / data.item.duration_ms) * 100;
+  const [progress, setProgress] = useState(
+    (data.progress_ms / data.item.duration_ms) * 100
+  );
+
+ useEffect(() => {
+   const interval = setInterval(() => {
+     setProgress((prevProgress) => {
+       const newProgress = prevProgress + 100 / (data.item.duration_ms / 1000);
+       return newProgress > 100 ? 100 : newProgress;
+     });
+   }, 1000);
+   return () => clearInterval(interval);
+ }, [data.item.duration_ms]);
+
+ const progressMs = (progress / 100) * data.item.duration_ms;
+
 
   return (
     <div
@@ -54,9 +72,9 @@ export const SpotifyCard = ({ data }: SpotifyCardProps) => {
             </p>
           </section>
           <section className="flex flex-col">
-            <ProgressBar value={progress} />
+            <ProgressBar value={progress} className="bg-green-400" />
             <div className="inline-flex justify-between">
-              <p className="text-sm">{msToTime(data.progress_ms)}</p>
+              <p className="text-sm">{msToTime(progressMs)}</p>
               <p className="text-sm">{msToTime(data.item.duration_ms)}</p>
             </div>
           </section>

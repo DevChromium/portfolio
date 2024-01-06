@@ -2,16 +2,20 @@ import { IconButton } from "@/components/ui/IconButton";
 import { SpotifyCard } from "@/components/ui/SpotifyCard";
 import { Window } from "@/components/ui/Window";
 import { getCurrentPlayback } from "@/lib/spotify";
-import { Github, Headphones, Mail } from "lucide-react";
+import { Github, Headphones, Info, Mail } from "lucide-react";
 import Image from "next/image";
+
+import skills from "../../public/json/skills.json"
+import { ProgressBar } from "@/components/ui/ProgressBar";
+
 
 export default async function Home() {
 
   let data = await getCurrentPlayback();
 
   return (
-    <main className="flex min-h-screen items-center justify-center">
-      <Window title="Welcome">
+    <main className="min-h-screen grid grid-cols-1 sm:grid-cols-4 sm:grid-rows-6 gap-4 m-8">
+      <Window title="Welcome!" className="col-auto row-auto sm:col-span-2 sm:row-span-3">
         <div className="flex flex-col sm:flex-row gap-4 px-4">
           <Image
             src="/img/headshot.jpg"
@@ -23,7 +27,7 @@ export default async function Home() {
           <section className="space-y-2">
             <div>
               <h1 className="font-bold text-2xl">Lucas Pauwels</h1>
-              <p>Freelance Software Engineer</p>
+              <p>Software Engineer</p>
             </div>
             <div className="flex gap-2">
               <IconButton
@@ -37,14 +41,70 @@ export default async function Home() {
             </div>
           </section>
         </div>
-        {data.is_playing === true && (
-          <div className="px-4 pb-4">
-            <h3 className="font-medium text-lg inline-flex gap-2 items-center">
-              <Image priority src="/spotify.svg" alt="Spotify icon" width={30} height={30} className="text-white" /> Listening to Spotify
-            </h3>
-            <SpotifyCard data={data} />
-          </div>
-        )}
+        <div className="px-4 pb-4 space-y-4">
+          <h3 className="font-white text-lg inline-flex gap-2 items-center font-bold">
+            <Info size={30} />
+            <span>About me</span>
+          </h3>
+          <p>
+            Hey, I'm Lucas, a 22 year old software engineer passionate about
+            solving complex problems through elegant code. With 8+ self-taught
+            years of experience, I thrive on innovation and enjoy creating
+            websites and API's. I'm driven by the desire to create impactful
+            software and love collaborating in dynamic, diverse teams. Let's
+            build something amazing together!
+          </p>
+          {data.is_playing === true && (
+            <>
+              <h3 className="font-medium text-lg inline-flex gap-2 items-center">
+                <Image
+                  priority
+                  src="/spotify.svg"
+                  alt="Spotify icon"
+                  width={30}
+                  height={30}
+                  className="text-white"
+                />{" "}
+                Listening to Spotify
+              </h3>
+              <SpotifyCard data={data} />
+            </>
+          )}
+        </div>
+      </Window>
+
+      <Window
+        title="Blog posts"
+        className="col-auto row-auto sm:col-span-2 sm:row-span-3 sm:col-start-1 sm:row-start-4"
+      >
+        <div className="p-4 text-center">Coming soon...</div>
+      </Window>
+      <Window
+        title="My Skills"
+        className="col-auto row-auto sm:col-span-2 sm:row-span-6 sm:col-start-3 sm:row-start-1"
+      >
+        <div className="p-4 flex flex-col gap-8">
+          {Object.keys(skills).map((key) => (
+            <div key={key} className="space-y-4">
+              <h2 className="capitalize font-bold text-xl">{key}</h2>
+              {skills[key].map((item, index) => (
+                <div
+                  key={index}
+                  className="inline-flex gap-2 items-center w-full"
+                >
+                  <span className="inline-flex gap-2 items-center w-full">
+                    <i className={item.icon} /> {item.name}
+                  </span>
+                  <span>{item.proficiency}%</span>
+                  <ProgressBar
+                    value={item.proficiency}
+                    className="bg-rose-500"
+                  />
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
       </Window>
     </main>
   );
