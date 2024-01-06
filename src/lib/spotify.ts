@@ -20,7 +20,7 @@ async function getAccessToken() {
             revalidate: 3600
         }
     }
-    const res = await fetch("https://accounts.spotify.com/api/token", {cache: "no-store", ...payload})
+    const res = await fetch("https://accounts.spotify.com/api/token", payload)
     const json = await res.json()
     return json;
 }
