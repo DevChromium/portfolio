@@ -85,16 +85,14 @@ export const SpotifyCard = ({ data, onSongFinish }: SpotifyCardProps) => {
               </a>
             </p>
           </section>
-          <section className="flex flex-col">
-            <ProgressBar
-              value={(songProgress / songData.duration) * 100}
-              className="bg-green-400"
-            />
-            <div className="inline-flex justify-between">
+            <div className="flex gap-2 items-center">
               <p className="text-sm">{msToTime(songProgress)}</p>
+              <ProgressBar
+                value={(songProgress / songData.duration) * 100}
+                className="bg-green-400"
+              />
               <p className="text-sm">{msToTime(songData.duration)}</p>
             </div>
-          </section>
         </div>
       </div>
     </div>
