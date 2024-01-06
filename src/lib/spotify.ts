@@ -26,7 +26,7 @@ export async function getCurrentPlayback() {
 
     const { access_token } = await getAccessToken()
 
-    const res = fetch("https://api.spotify.com/v1/me/player", {
+    const response = await fetch("https://api.spotify.com/v1/me/player", {
         cache: "no-store",
         method: "GET",
         headers: {
@@ -35,5 +35,7 @@ export async function getCurrentPlayback() {
         }
     });
 
-    return res
+    const json = response.json()
+
+    return response.status === 200 ? json : { is_playing: false}
 }

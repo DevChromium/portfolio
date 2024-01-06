@@ -2,13 +2,11 @@ import { IconButton } from "@/components/ui/IconButton";
 import { SpotifyCard } from "@/components/ui/SpotifyCard";
 import { Window } from "@/components/ui/Window";
 import { getCurrentPlayback } from "@/lib/spotify";
-import { Github, Headphones, Info, Mail } from "lucide-react";
+import { Info } from "lucide-react";
 import Image from "next/image";
 
-import skills from "../../public/json/skills.json";
 import { ProgressBar } from "@/components/ui/ProgressBar";
-import { SongData } from "@/types/Spotify";
-import useSWR from "swr";
+import skills from "../../public/json/skills.json";
 
 interface Skills {
   [key: string]: {
@@ -19,8 +17,7 @@ interface Skills {
 }
 
 export default async function Home() {
-  const songData =await fetch(`https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/spotify`).then(r => r.json())
-  console.log(songData)
+  const songData = await getCurrentPlayback()
   let skillList: Skills = skills
 
   return (
