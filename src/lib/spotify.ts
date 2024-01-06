@@ -15,11 +15,12 @@ async function getAccessToken() {
         })
     }
     const res = await fetch("https://accounts.spotify.com/api/token", payload)
-    return await res.json();
+    const json = await res.json()
+    return json;
 }
 
 export async function getCurrentPlayback() {
-    let returnVal = null
+    let returnVal
 
     const { access_token } = await getAccessToken()
 
