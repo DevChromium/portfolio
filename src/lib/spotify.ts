@@ -1,6 +1,6 @@
 // TODO: Fix runtimes on vercel
 
-async function getAccessToken() {
+export async function getAccessToken() {
 
     const base64Buffer = Buffer.from(`${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`).toString("base64")
 
@@ -8,7 +8,10 @@ async function getAccessToken() {
         method: "POST",
         headers: {
             "Authorization": `Basic ${base64Buffer}`,
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Access-Control-Allow-Origin": '*',
+            'Access-Control-Allow-Methods': 'GET,DELETE,PATCH,POST,PUT',
+            'Access-Control-Allow-Headers': '*'
         },
         body: new URLSearchParams({
             grant_type: "refresh_token",
@@ -25,21 +28,34 @@ async function getAccessToken() {
     return json;
 }
 
-export async function getNowPlaying() {
-    let returnVal
+// export async function getNowPlaying() {
+//     let returnVal
 
+//     const { access_token } = await getAccessToken()
+
+//     const res = await fetch("https://api.spotify.com/v1/me/player", {
+//         cache: "no-store",
+//         method: "GET",
+//         headers: {
+//             "Authorization": `Bearer ${access_token}`,
+//             "Content-Type": "application/json",
+//         }
+//     });
+
+//     const json = res.json()
+
+//     return res.status === 200 ? json : { is_playing: false}
+// }
+
+export async function getNowPlaying() {
     const { access_token } = await getAccessToken()
 
-    const response = await fetch("https://api.spotify.com/v1/me/player", {
-        cache: "no-store",
+    return fetch("https://api.spotify.com/v1/me/player", {
         method: "GET",
         headers: {
             "Authorization": `Bearer ${access_token}`,
-            "Content-Type": "application/json"
-        }
-    });
-
-    const json = response.json()
-
-    return response.status === 200 ? json : { is_playing: false}
+            "Content-Type": "application/json",
+        },
+        cache: "no-store"
+    })
 }
