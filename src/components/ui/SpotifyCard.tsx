@@ -26,7 +26,7 @@ export const SpotifyCard = ({ data, onSongFinish }: SpotifyCardProps) => {
     if (!isFinished) {
       interval = setInterval(() => {
         setSongProgress((prevProgress) => {
-          const newProgress = prevProgress + 1000;
+          const newProgress = prevProgress + 2000;
           if (newProgress >= songData.duration) {
             setIsFinished(true); // Mark as finished when progress reaches duration
             onSongFinish();
@@ -34,7 +34,7 @@ export const SpotifyCard = ({ data, onSongFinish }: SpotifyCardProps) => {
           }
           return newProgress;
         });
-      }, 1000);
+      }, 2000);
     }
 
     return () => clearInterval(interval); // Clean up the interval on unmount or finish

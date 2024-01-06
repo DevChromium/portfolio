@@ -9,6 +9,7 @@ export const ProgressBar = ({ value, className }: ProgressBarProps) => {
         className={`${className} h-2 5 rounded-full`}
         style={{
           width: `${value}%`,
+          transition: "width 0.2s ease-in-out"
         }}
       ></div>
     </div>
