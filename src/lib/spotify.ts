@@ -37,6 +37,8 @@ export async function getCurrentPlayback() {
             isPlaying: false,
             item: null
         }
+
+        console.log(res.statusText)
     }
 
     returnVal = await res.json()
