@@ -43,17 +43,3 @@ export async function getNowPlaying() {
 
     return response.status === 200 ? json : { is_playing: false}
 }
-
-export async function fetchAndUpdatePlayback() {
-    let songData = await getNowPlaying();
-
-    // Check if song is playing
-    if (songData.is_playing) {
-        setTimeout(fetchAndUpdatePlayback, songData.item.duration_ms - songData.progress_ms);
-    } else {
-        // Song is not playing, fetch again after a certain duration (e.g., 5 seconds)
-        setTimeout(fetchAndUpdatePlayback, 60 * 60); // Adjust as needed
-    }
-
-    return songData;
-}

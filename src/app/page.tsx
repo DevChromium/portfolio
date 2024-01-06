@@ -1,9 +1,8 @@
 import { IconButton } from "@/components/ui/IconButton";
-import { SpotifyCard } from "@/components/ui/SpotifyCard";
 import { Window } from "@/components/ui/Window";
-import { fetchAndUpdatePlayback } from "@/lib/spotify";
 import { Info } from "lucide-react";
 import Image from "next/image";
+import { SpotifyInfo } from "@/components/ui/SpotifyInfo";
 
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import skills from "../../public/json/skills.json";
@@ -19,7 +18,7 @@ interface Skills {
 
 
 export default async function Home() {
-  let songData = await fetchAndUpdatePlayback();
+  
   let skillList: Skills = skills;
 
   return (
@@ -63,22 +62,7 @@ export default async function Home() {
             create impactful software and love collaborating in dynamic, diverse
             teams. Let&lsquo;s build something amazing together!
           </p>
-          {songData.is_playing === true && (
-            <>
-              <h3 className="font-medium text-lg inline-flex gap-2 items-center">
-                <Image
-                  priority
-                  src="/spotify.svg"
-                  alt="Spotify icon"
-                  width={30}
-                  height={30}
-                  className="text-white"
-                />{" "}
-                Listening to Spotify
-              </h3>
-              <SpotifyCard data={songData} />
-            </>
-          )}
+          <SpotifyInfo />
         </div>
       </Window>
 

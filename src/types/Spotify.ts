@@ -1,6 +1,6 @@
 export interface SpotifyResponse {
     progress_ms: number
-    item: Item
+    item: Item | null
 }
 
 export interface Item {
