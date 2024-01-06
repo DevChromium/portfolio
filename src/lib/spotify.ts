@@ -1,3 +1,5 @@
+// TODO: Fix runtimes on vercel
+
 async function getAccessToken() {
 
     const base64Buffer = Buffer.from(`${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`).toString("base64")
@@ -24,7 +26,7 @@ export async function getCurrentPlayback() {
 
     const { access_token } = await getAccessToken()
 
-    const res = await fetch("https://api.spotify.com/v1/me/player", {
+    const res = fetch("https://api.spotify.com/v1/me/player", {
         cache: "no-store",
         method: "GET",
         headers: {
@@ -33,16 +35,5 @@ export async function getCurrentPlayback() {
         }
     });
 
-    if (!res.ok) {
-        returnVal = {
-            isPlaying: false,
-            item: null
-        }
-
-        console.log(res.statusText)
-    }
-
-    returnVal = await res.json()
-
-    return returnVal
+    return res
 }

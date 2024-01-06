@@ -7,6 +7,8 @@ import Image from "next/image";
 
 import skills from "../../public/json/skills.json";
 import { ProgressBar } from "@/components/ui/ProgressBar";
+import { SongData } from "@/types/Spotify";
+import useSWR from "swr";
 
 interface Skills {
   [key: string]: {
@@ -17,8 +19,8 @@ interface Skills {
 }
 
 export default async function Home() {
-
-  let data = await getCurrentPlayback();
+  const songData =await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/spotify`).then(r => r.json())
+  console.log(songData)
   let skillList: Skills = skills
 
   return (
@@ -65,7 +67,7 @@ export default async function Home() {
             create impactful software and love collaborating in dynamic, diverse
             teams. Let&lsquo;s build something amazing together!
           </p>
-          {data.is_playing === true && (
+          {songData.is_playing === true && (
             <>
               <h3 className="font-medium text-lg inline-flex gap-2 items-center">
                 <Image
@@ -78,7 +80,7 @@ export default async function Home() {
                 />{" "}
                 Listening to Spotify
               </h3>
-              <SpotifyCard data={data} />
+              <SpotifyCard data={songData} />
             </>
           )}
         </div>
