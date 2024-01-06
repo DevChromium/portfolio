@@ -17,7 +17,7 @@ async function getAccessToken() {
         }),
         
         next: {
-            revalidate: 3600
+            revalidate: 60 * 60 * 60
         }
     }
     const res = await fetch("https://accounts.spotify.com/api/token", payload)
@@ -25,7 +25,7 @@ async function getAccessToken() {
     return json;
 }
 
-export async function getCurrentPlayback() {
+export async function getNowPlaying() {
     let returnVal
 
     const { access_token } = await getAccessToken()
@@ -42,4 +42,18 @@ export async function getCurrentPlayback() {
     const json = response.json()
 
     return response.status === 200 ? json : { is_playing: false}
+}
+
+async function fetchAndUpdatePlayback() {
+    let songData = await getNowPlaying();
+
+    // Check if song is playing
+    if (songData.is_playing) {
+        setTimeout(fetchAndUpdatePlayback, songData.item.duration_ms - songData.progress_ms);
+    } else {
+        // Song is not playing, fetch again after a certain duration (e.g., 5 seconds)
+        setTimeout(fetchAndUpdatePlayback, 60 * 60); // Adjust as needed
+    }
+
+    return songData;
 }
