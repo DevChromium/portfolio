@@ -1,7 +1,7 @@
 import { IconButton } from "@/components/ui/IconButton";
 import { SpotifyCard } from "@/components/ui/SpotifyCard";
 import { Window } from "@/components/ui/Window";
-import { getCurrentPlayback } from "@/lib/spotify";
+import { fetchAndUpdatePlayback } from "@/lib/spotify";
 import { Info } from "lucide-react";
 import Image from "next/image";
 
@@ -16,16 +16,15 @@ interface Skills {
   }[];
 }
 
+
+
 export default async function Home() {
-  const songData = await getCurrentPlayback()
-  let skillList: Skills = skills
+  let songData = await fetchAndUpdatePlayback();
+  let skillList: Skills = skills;
 
   return (
-    <main className="min-h-screen grid grid-cols-1 sm:grid-cols-4 sm:grid-rows-6 gap-4 m-8">
-      <Window
-        title="Welcome!"
-        className="col-auto row-auto sm:col-span-2 sm:row-span-3"
-      >
+    <main className="min-h-screen grid grid-cols-1 sm:grid-cols-4 sm:grid-rows-4 gap-4 m-8">
+      <Window title="Welcome!" className="col-auto row-auto sm:col-span-2 justify-between">
         <div className="flex flex-col sm:flex-row gap-4 px-4">
           <Image
             src="/img/headshot.jpg"
@@ -85,13 +84,13 @@ export default async function Home() {
 
       <Window
         title="Blog posts"
-        className="col-auto row-auto sm:col-span-2 sm:row-span-3 sm:col-start-1 sm:row-start-4"
+        className="col-auto row-auto sm:col-span-2 sm:row-span-2 sm:col-start-1 sm:row-start-auto"
       >
         <div className="p-4 text-center">Coming soon...</div>
       </Window>
       <Window
         title="My Skills"
-        className="col-auto row-auto sm:col-span-2 sm:row-span-6 sm:col-start-3 sm:row-start-1"
+        className="col-auto row-auto sm:col-span-2 sm:row-span-3 sm:col-start-3 sm:row-start-1 justify-start"
       >
         <div className="p-4 flex flex-col gap-8">
           {Object.keys(skillList).map((key) => (

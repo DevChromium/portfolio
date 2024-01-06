@@ -44,7 +44,7 @@ export async function getNowPlaying() {
     return response.status === 200 ? json : { is_playing: false}
 }
 
-async function fetchAndUpdatePlayback() {
+export async function fetchAndUpdatePlayback() {
     let songData = await getNowPlaying();
 
     // Check if song is playing
