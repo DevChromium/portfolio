@@ -1,6 +1,6 @@
-"use client"
+"use client";
 import { SpotifyCard } from "./SpotifyCard";
-import Image from "next/image"
+import Image from "next/image";
 import { useState } from "react";
 import useSWR from "swr";
 
@@ -14,24 +14,33 @@ export function SpotifyInfo() {
   );
 
   const handleSongFinish = () => {
-    mutate('/api/spotify', { revalidate: true})
+    mutate("/api/spotify", { revalidate: true });
+  };
+
+  if (error) {
+    return (
+      <div className="bg-rose-950/50 border border-rose-900/90 rounded-md text-center font-bold py-6 px-4">
+        Error loading in Spotify Data
+      </div>
+    );
   }
 
-  if(error) {
-    return <div className="bg-rose-950/50 border border-rose-900/90 rounded-md text-center font-bold py-6 px-4">Error loading in Spotify Data</div>
+  if (!data) {
+    return (
+      <div className="bg-green-950/50 border border-green-900/90 rounded-md text-center font-bold py-6 px-4">
+        Loading...
+      </div>
+    );
   }
 
-  if(!data) {
-    return <div className="bg-green-950/50 border border-green-900/90 rounded-md text-center font-bold py-6 px-4">Loading...</div>
-  }
+  const currentSongData = data;
 
-  const currentSongData = data
-
-  if(!currentSongData.is_playing) return (
-    <div className="bg-rose-950/50 border border-rose-900/90 rounded-md text-center font-bold py-6 px-4">
-      Currently not playing a song on Spotify
-    </div>
-  )
+  if (!currentSongData.is_playing)
+    return (
+      <div className="bg-rose-950/50 border border-rose-900/90 rounded-md text-center font-bold py-6 px-4">
+        Currently not playing a song on Spotify
+      </div>
+    );
 
   return (
     <>
@@ -46,7 +55,10 @@ export function SpotifyInfo() {
         />{" "}
         Listening to Spotify
       </h3>
-      <SpotifyCard data={currentSongData.data} onSongFinish={handleSongFinish} />
+      <SpotifyCard
+        data={currentSongData.song}
+        onSongFinish={handleSongFinish}
+      />
     </>
   );
 }
