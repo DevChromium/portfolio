@@ -6,6 +6,7 @@ import { SpotifyInfo } from "@/components/ui/SpotifyInfo";
 
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import skills from "../../public/json/skills.json";
+import { getMyAge } from "@/lib/utils";
 
 interface Skills {
   [key: string]: {
@@ -55,7 +56,7 @@ export default async function Home() {
             <span>About me</span>
           </h3>
           <p>
-            Hey, I&lsquo;m Lucas, a 22 year old software engineer passionate
+            Hey, I&lsquo;m Lucas, a {getMyAge()} year old software engineer passionate
             about solving complex problems through elegant code. With 8+
             self-taught years of experience, I thrive on innovation and enjoy
             creating websites and API&lsquo;s. I&lsquo;m driven by the desire to

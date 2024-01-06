@@ -1,137 +1,132 @@
 {
-    "languages": [
-        {
-            "name": "HTML5",
-            "icon": "devicon-html5-plain",
-            "proficiency": "100"
-        },
-        {
-            "name": "CSS3",
-            "icon": "devicon-css3-plain",
-            "proficiency": "100"
-        },
-        {
-            "name": "Javascript",
-            "icon": "devicon-javascript-plain",
-            "proficiency": "100"
-        },
-        {
-            "name": "Typescript",
-            "icon": "devicon-typescript-plain",
-            "proficiency": "95"
-        },
-        {
-            "name": "Java",
-            "icon": "devicon-java-plain",
-            "proficiency": "80"
-        },
-        {
-            "name": "Kotlin",
-            "icon": "devicon-kotlin-plain",
-            "proficiency": "80"
-        },
-        {
-            "name": "PHP",
-            "icon": "devicon-php-plain",
-            "proficiency": "75"
-        },
-        {
-            "name": "C#",
-            "icon": "devicon-csharp-plain",
-            "proficiency": "80"
-        },
-        {
-            "name": "Python",
-            "icon": "devicon-python-plain",
-            "proficiency": "90"
-        }
-    ],
-    "databases": [
-        {
-            "name": "MySQL",
-            "icon": "devicon-mysql-plain",
-            "proficiency": "100"
-        },
-        {
-            "name": "PostgreSQL",
-            "icon": "devicon-postgresql-plain",
-            "proficiency": "100"
-        },
-        {
-            "name": "Microsoft SQL Server",
-            "icon": "devicon-microsoftsqlserver-plain",
-            "proficiency": "100"
-        },
-        {
-            "name": "SQLite",
-            "icon": "devicon-sqlite-plain",
-            "proficiency": "100"
-        },
-        {
-            "name": "MongoDB",
-            "icon": "devicon-mongodb-plain",
-            "proficiency": "100"
-        }
-    ],
-    "frameworks": [
-          {
-            "name": "React",
-            "icon": "devicon-react-plain",
-            "proficiency": "95"
-        },
-        {
-            "name": "NextJS",
-            "icon": "devicon-nextjs-plain",
-            "proficiency": "95"
-        },
-        {
-            "name": "DotNET Core",
-            "icon": "devicon-dotnetcore-plain",
-            "proficiency": "85"
-        },
-        {
-            "name": "Angular",
-            "icon": "devicon-angularjs-plain",
-            "proficiency": "85"
-        },
-        {
-            "name": "Laravel",
-            "icon": "devicon-laravel-plain",
-            "proficiency": "85"
-        },
-        {
-            "name": "Express",
-            "icon": "devicon-express-original",
-            "proficiency": "100"
-        },
-        {
-            "name": "NodeJS",
-            "icon": "devicon-nodejs-plain",
-            "proficiency": "100"
-        }
-    ],
-    "tooling": [
-        {
-            "name": "Git",
-            "icon": "devicon-git-plain",
-            "proficiency": "80"
-        },
-        {
-            "name": "Docker",
-            "icon": "devicon-docker-plain",
-            "proficiency": "80"
-        }
-    ],
-    "Software": [
-        {
-            "name": "Github",
-            "icon": "devicon-github-plain",
-            "proficiency": "100"
-        },
-        {
-            "name": "Docker",
-            "icon": "devicon-docker-plain",
-            "proficiency": "80"
-        }
-    ]
+  "languages": [
+    {
+      "name": "HTML5",
+      "icon": "devicon-html5-plain",
+      "proficiency": "100"
+    },
+    {
+      "name": "CSS3",
+      "icon": "devicon-css3-plain",
+      "proficiency": "100"
+    },
+    {
+      "name": "Javascript",
+      "icon": "devicon-javascript-plain",
+      "proficiency": "100"
+    },
+    {
+      "name": "Typescript",
+      "icon": "devicon-typescript-plain",
+      "proficiency": "95"
+    },
+    {
+      "name": "Java",
+      "icon": "devicon-java-plain",
+      "proficiency": "80"
+    },
+    {
+      "name": "Kotlin",
+      "icon": "devicon-kotlin-plain",
+      "proficiency": "80"
+    },
+    {
+      "name": "PHP",
+      "icon": "devicon-php-plain",
+      "proficiency": "75"
+    },
+    {
+      "name": "C#",
+      "icon": "devicon-csharp-plain",
+      "proficiency": "80"
+    },
+    {
+      "name": "Python",
+      "icon": "devicon-python-plain",
+      "proficiency": "90"
+    }
+  ],
+  "databases": [
+    {
+      "name": "MySQL",
+      "icon": "devicon-mysql-plain",
+      "proficiency": "100"
+    },
+    {
+      "name": "PostgreSQL",
+      "icon": "devicon-postgresql-plain",
+      "proficiency": "100"
+    },
+    {
+      "name": "Microsoft SQL Server",
+      "icon": "devicon-microsoftsqlserver-plain",
+      "proficiency": "100"
+    },
+    {
+      "name": "SQLite",
+      "icon": "devicon-sqlite-plain",
+      "proficiency": "100"
+    },
+    {
+      "name": "MongoDB",
+      "icon": "devicon-mongodb-plain",
+      "proficiency": "100"
+    }
+  ],
+  "frameworks": [
+    {
+      "name": "React",
+      "icon": "devicon-react-plain",
+      "proficiency": "95"
+    },
+    {
+      "name": "NextJS",
+      "icon": "devicon-nextjs-plain",
+      "proficiency": "95"
+    },
+    {
+      "name": "DotNET Core",
+      "icon": "devicon-dotnetcore-plain",
+      "proficiency": "85"
+    },
+    {
+      "name": "Angular",
+      "icon": "devicon-angularjs-plain",
+      "proficiency": "85"
+    },
+    {
+      "name": "Laravel",
+      "icon": "devicon-laravel-plain",
+      "proficiency": "85"
+    },
+    {
+      "name": "Express",
+      "icon": "devicon-express-original",
+      "proficiency": "100"
+    },
+    {
+      "name": "NodeJS",
+      "icon": "devicon-nodejs-plain",
+      "proficiency": "100"
+    }
+  ],
+  "tooling": [
+    {
+      "name": "Git",
+      "icon": "devicon-git-plain",
+      "proficiency": "80"
+    },
+    {
+      "name": "Docker",
+      "icon": "devicon-docker-plain",
+      "proficiency": "80"
+    }
+  ],
+  "Software": [
+    {
+      "name": "Github",
+      "icon": "devicon-github-plain",
+      "proficiency": "100"
+    }
+  ]
 }
