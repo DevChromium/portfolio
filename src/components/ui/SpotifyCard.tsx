@@ -28,6 +28,7 @@ export const SpotifyCard = ({ data, onSongFinish }: SpotifyCardProps) => {
           const newProgress = prevProgress + 2000;
           if (newProgress >= songData.duration) {
             setIsFinished(true); // Mark as finished when progress reaches duration
+            onSongFinish()
             return songData.duration;
           }
           return newProgress;
