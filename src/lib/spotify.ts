@@ -1,5 +1,3 @@
-// TODO: Fix runtimes on vercel
-
 export async function getAccessToken() {
 
     const base64Buffer = Buffer.from(`${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`).toString("base64")
@@ -18,10 +16,6 @@ export async function getAccessToken() {
             refresh_token: process.env.SPOTIFY_REFRESH_TOKEN as string,
             client_id: process.env.SPOTIFY_CLIENT_ID as string
         }),
-        
-        next: {
-            revalidate: 60 * 60 * 60
-        }
     }
     const res = await fetch("https://accounts.spotify.com/api/token", payload)
     const json = await res.json()

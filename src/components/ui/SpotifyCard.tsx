@@ -12,7 +12,6 @@ interface SpotifyCardProps {
 
 export const SpotifyCard = ({ data, onSongFinish }: SpotifyCardProps) => {
   const [songData, setSongData] = useState(data);
-  console.log(songData);
   const [songProgress, setSongProgress] = useState(songData.progress);
   const [isFinished, setIsFinished] = useState(
     songProgress === songData.duration
@@ -29,7 +28,6 @@ export const SpotifyCard = ({ data, onSongFinish }: SpotifyCardProps) => {
           const newProgress = prevProgress + 2000;
           if (newProgress >= songData.duration) {
             setIsFinished(true); // Mark as finished when progress reaches duration
-            onSongFinish();
             return songData.duration;
           }
           return newProgress;
@@ -85,14 +83,14 @@ export const SpotifyCard = ({ data, onSongFinish }: SpotifyCardProps) => {
               </a>
             </p>
           </section>
-            <div className="flex gap-2 items-center">
-              <p className="text-sm">{msToTime(songProgress)}</p>
-              <ProgressBar
-                value={(songProgress / songData.duration) * 100}
-                className="bg-green-400"
-              />
-              <p className="text-sm">{msToTime(songData.duration)}</p>
-            </div>
+          <div className="flex gap-2 items-center">
+            <p className="text-sm">{msToTime(songProgress)}</p>
+            <ProgressBar
+              value={(songProgress / songData.duration) * 100}
+              className="bg-green-400"
+            />
+            <p className="text-sm">{msToTime(songData.duration)}</p>
+          </div>
         </div>
       </div>
     </div>

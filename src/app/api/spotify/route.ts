@@ -1,10 +1,11 @@
 import { getNowPlaying } from "@/lib/spotify";
 import { SpotifyResponse } from "@/types/Spotify";
+import { unstable_noStore } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
-export const dynamic = 'force-dynamic'
-
 export async function GET(req: NextRequest) {
+
+    unstable_noStore()
 
     const response = await getNowPlaying()
     const data = await response.json()
