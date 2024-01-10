@@ -28,7 +28,7 @@ export const SpotifyCard = ({ data, onSongFinish }: SpotifyCardProps) => {
           const newProgress = prevProgress + 2000;
           if (newProgress >= songData.duration) {
             setIsFinished(true); // Mark as finished when progress reaches duration
-            onSongFinish()
+            onSongFinish();
             return songData.duration;
           }
           return newProgress;
@@ -40,60 +40,64 @@ export const SpotifyCard = ({ data, onSongFinish }: SpotifyCardProps) => {
   }, [isFinished, songData.duration, onSongFinish]);
 
   return (
-    <div
-      style={{ backgroundImage: `url(${albumCover})` }}
-      className="bg-center rounded-md"
-    >
-      <div className="bg-black/65 backdrop-filter backdrop-blur-md border border-gray-950/95 rounded-md p-4 flex flex-col sm:flex-row gap-4 sm:items-center shadow-inner">
-        <Image
-          src={albumCover}
-          alt={`Cover of album: ${songData.album.name}`}
-          width={100}
-          height={100}
-          className="rounded-md h-auto aspect-square shadow-sm"
-        />
-        <div className="w-full space-y-4">
-          <section>
-            <span className="text-md font-bold inline-flex items-center gap-2">
-              {songData.explicit ? <span>&#127348;</span> : <></>}
-              <a
-                className="hover:underline"
-                href={songData.url}
-                target="_blank"
-              >
-                {songData.name}
+    <section className="bg-zinc-900/65 border border-zinc-900/95 rounded-md p-4 flex flex-col sm:flex-row gap-4 sm:items-center shadow-inner relative">
+      <Image
+        src={"/spotify.svg"}
+        alt="Spotify logo"
+        width={20}
+        height={20}
+        className="absolute top-3 right-3"
+      />
+
+      <Image
+        src={albumCover}
+        alt={`Cover of album: ${songData.album.name}`}
+        width={100}
+        height={100}
+        className="rounded-md shadow-sm"
+      />
+      <div className="w-full space-y-4">
+        <section>
+          <span className="text-md font-bold inline-flex items-center gap-2">
+            {songData.explicit ? <span>&#127348;</span> : <></>}
+            <a
+              className={`hover:underline`}
+              href={songData.url}
+              target="_blank"
+            >
+              {songData.name}
+            </a>
+          </span>
+
+          <p className="text-sm">
+            by{" "}
+            {artists.map((artist, index) => (
+              <a href={artist.url} key={index} target="_blank">
+                {index ? ", " : ""}
+                <span className="hover:underline">{artist.name}</span>
               </a>
-            </span>
-            <p className="text-sm">
-              by{" "}
-              {artists.map((artist, index) => (
-                <a href={artist.url} key={index} target="_blank">
-                  {index ? ", " : ""}
-                  <span className="hover:underline">{artist.name}</span>
-                </a>
-              ))}
-            </p>
-            <p className="text-sm">
-              on{" "}
-              <a
-                href={songData.album.url}
-                target="_blank"
-                className="hover:underline"
-              >
-                {songData.album.name}
-              </a>
-            </p>
-          </section>
-          <div className="flex gap-2 items-center">
-            <p className="text-sm">{msToTime(songProgress)}</p>
-            <ProgressBar
-              value={(songProgress / songData.duration) * 100}
-              className="bg-green-400"
-            />
-            <p className="text-sm">{msToTime(songData.duration)}</p>
-          </div>
+            ))}
+          </p>
+          <p className="text-sm">
+            on{" "}
+            <a
+              href={songData.album.url}
+              target="_blank"
+              className="hover:underline"
+            >
+              {songData.album.name}
+            </a>
+          </p>
+        </section>
+        <div className="flex gap-2 items-center">
+          <p className="text-sm">{msToTime(songProgress)}</p>
+          <ProgressBar
+            value={(songProgress / songData.duration) * 100}
+            className="bg-green-400"
+          />
+          <p className="text-sm">{msToTime(songData.duration)}</p>
         </div>
       </div>
-    </div>
+    </section>
   );
 };

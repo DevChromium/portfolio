@@ -44,17 +44,6 @@ export function SpotifyInfo() {
 
   return (
     <>
-      <h3 className="font-medium text-lg inline-flex gap-2 items-center">
-        <Image
-          priority
-          src="/spotify.svg"
-          alt="Spotify icon"
-          width={30}
-          height={30}
-          className="text-white"
-        />{" "}
-        Listening to Spotify
-      </h3>
       <SpotifyCard
         data={currentSongData.song}
         onSongFinish={handleSongFinish}
