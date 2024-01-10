@@ -2,10 +2,8 @@
 import { msToTime } from "@/lib/converters";
 import { SpotifyResponse } from "@/types/Spotify";
 import Image from "next/image";
-import { ProgressBar } from "./ProgressBar";
 import { RefObject, useEffect, useRef, useState } from "react";
-import { AnimatedText } from "../core/AnimatedText";
-import Marquee from "react-fast-marquee";
+import { ProgressBar } from "./ProgressBar";
 
 interface SpotifyCardProps {
   data: SpotifyResponse;
