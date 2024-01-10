@@ -47,7 +47,7 @@ export const SpotifyCard = ({ data, onSongFinish }: SpotifyCardProps) => {
       <div className="flex gap-2">
         <Image src={"/spotify.svg"} alt="Spotify logo" width={20} height={20} />
         <p className="max-w-prose text-sm font-semibold">
-          Listening to spotify
+          Listening to Spotify
         </p>
       </div>
 
