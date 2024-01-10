@@ -7,6 +7,7 @@ import { SpotifyInfo } from "@/components/ui/SpotifyInfo";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import skills from "../../public/json/skills.json";
 import { getMyAge } from "@/lib/utils";
+import { Alert } from "@/components/core/Alert";
 
 interface Skills {
   [key: string]: {
@@ -77,9 +78,7 @@ export default async function Home() {
         title="My Skills"
         className="col-auto row-auto sm:col-span-2 sm:row-span-3 sm:col-start-3 sm:row-start-1 justify-start"
       >
-        <h3 className="mx-4 bg-rose-950/50 border border-rose-900/90 rounded-md text-center font-bold py-6 px-4">
-          Values indicate my proficiency in the skill.
-        </h3>
+        <Alert intent="info" text="Values indicate my proficiency in the skill." className="mx-4" />
         <div className="p-4 flex flex-col gap-8">
           {Object.keys(skillList).map((key) => (
             <div key={key} className="space-y-4">

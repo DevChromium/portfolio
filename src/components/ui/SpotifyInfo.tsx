@@ -3,6 +3,7 @@ import { SpotifyCard } from "./SpotifyCard";
 import Image from "next/image";
 import { useState } from "react";
 import useSWR from "swr";
+import { Alert } from "../core/Alert";
 
 export function SpotifyInfo() {
   const { data, error, mutate } = useSWR("/api/spotify", (url) =>
@@ -18,29 +19,17 @@ export function SpotifyInfo() {
   };
 
   if (error) {
-    return (
-      <div className="bg-rose-950/50 border border-rose-900/90 rounded-md text-center font-bold py-6 px-4">
-        Error loading in Spotify Data
-      </div>
-    );
+    return <Alert intent="danger" text="Error loading in Spotify Data..." />;
   }
 
   if (!data) {
-    return (
-      <div className="bg-green-950/50 border border-green-900/90 rounded-md text-center font-bold py-6 px-4">
-        Loading...
-      </div>
-    );
+    return <Alert intent="info" text="Loading..."/>
   }
 
   const currentSongData = data;
 
   if (!currentSongData.is_playing)
-    return (
-      <div className="bg-rose-950/50 border border-rose-900/90 rounded-md text-center font-bold py-6 px-4">
-        Currently not playing a song on Spotify
-      </div>
-    );
+    return <Alert intent="primary" text="Currently not listening to Spotify" />;
 
   return (
     <>
