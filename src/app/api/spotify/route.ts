@@ -11,16 +11,16 @@ export async function GET(req: NextRequest) {
 
     if (response.status !== 200) {
         return NextResponse.json({
-            is_playing: true,
+            is_playing: false,
             song: {
                 album: {
-                    name: "My dick",
+                    name: "",
                     cover: "",
                     url: "",
                 },
                 artists: [],
-                name: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum!",
-                url: "https://google.com",
+                name: "",
+                url: "",
                 progress: 0,
                 duration: 0,
                 explicit: false,
