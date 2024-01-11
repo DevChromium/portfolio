@@ -2,8 +2,10 @@
 import { msToTime } from "@/lib/converters";
 import { SpotifyResponse } from "@/types/Spotify";
 import Image from "next/image";
-import { RefObject, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ProgressBar } from "./ProgressBar";
+import { motion } from "framer-motion";
+import { MarqueeBounce } from "../core/MarqueeBounce";
 
 interface SpotifyCardProps {
   data: SpotifyResponse;
@@ -11,12 +13,16 @@ interface SpotifyCardProps {
 }
 
 export const SpotifyCard = ({ data, onSongFinish }: SpotifyCardProps) => {
-  const spotifyCardRef = useRef<RefObject<HTMLDivElement>>();
-  const [songData, setSongData] = useState(data);
+  const [songData, _] = useState(data);
   const [songProgress, setSongProgress] = useState(songData.progress);
   const [isFinished, setIsFinished] = useState(
     songProgress === songData.duration
   );
+
+  const [textWidth, setTextWidth] = useState<number>(0);
+  const [maxTitleWidth, setMaxTitleWidth] = useState<number>(0);
+  const titleRef = useRef<HTMLDivElement>(null);
+  const textWidthRef = useRef<HTMLDivElement>(null);
 
   const albumCover = songData.album.cover;
   const artists = songData.artists;
@@ -40,8 +46,38 @@ export const SpotifyCard = ({ data, onSongFinish }: SpotifyCardProps) => {
     return () => clearInterval(interval); // Clean up the interval on unmount or finish
   }, [isFinished, songData.duration, onSongFinish]);
 
+  useEffect(() => {
+    const updateMaxTitleWidth = () => {
+      if (titleRef.current) {
+        const sectionWidth = titleRef.current.clientWidth;
+        setMaxTitleWidth(sectionWidth);
+      }
+    };
+
+    updateMaxTitleWidth();
+    window.addEventListener("resize", updateMaxTitleWidth);
+
+    return () => {
+      window.removeEventListener("resize", updateMaxTitleWidth);
+    };
+  }, [songData.name]);
+
+  useEffect(() => {
+     const updateTextWidth = () => {
+       if (textWidthRef.current) {
+         setTextWidth(textWidthRef.current.clientWidth);
+       }
+     };
+
+     updateTextWidth();
+     window.addEventListener("resize", updateTextWidth);
+      return () => {
+        window.removeEventListener("resize", updateTextWidth);
+      };
+  }, [])
+
   return (
-    <section className="bg-zinc-900/65 border border-zinc-900/95 rounded-md p-4 shadow-inner space-y-4">
+    <motion.section className="bg-zinc-900/65 border border-zinc-900/95 rounded-md p-4 shadow-inner space-y-4">
       <div className="flex gap-2">
         <Image src={"/spotify.svg"} alt="Spotify logo" width={20} height={20} />
         <p className="max-w-prose text-sm font-semibold">
@@ -57,25 +93,28 @@ export const SpotifyCard = ({ data, onSongFinish }: SpotifyCardProps) => {
           height={100}
           className="rounded-md shadow-sm"
         />
-        <div className="w-full">
-          <section>
+        <div className="w-full overflow-hidden">
+          <section ref={titleRef}>
             <div className="text-md font-bold inline-flex items-center gap-2">
               {songData.explicit ? (
-                <span className="bg-white text-black rounded-sm text-[8px] w-3 h-3 text-center">
-                  E
-                </span>
+                <Image
+                  src={"/explicit.svg"}
+                  alt="Excplicit song"
+                  width={20}
+                  height={20}
+                  className="z-10"
+                />
               ) : (
                 <></>
               )}
-              <a
-                className={`text-ellipsis hover:underline`}
-                href={songData.url}
-                target="_blank"
-              >
-                <span className="max-w-prose text-ellipsis">
-                  {songData.name}
-                </span>
-              </a>
+              <div className="inline-flex" ref={textWidthRef}>
+                <MarqueeBounce
+                  text={songData.name}
+                  url={songData.url}
+                  textWidth={textWidth}
+                  maxTextWidth={maxTitleWidth}
+                />
+              </div>
             </div>
 
             <p className="text-sm">
@@ -108,6 +147,6 @@ export const SpotifyCard = ({ data, onSongFinish }: SpotifyCardProps) => {
         />
         <p className="text-sm">{msToTime(songData.duration)}</p>
       </div>
-    </section>
+    </motion.section>
   );
 };
