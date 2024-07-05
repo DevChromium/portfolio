@@ -1,11 +1,12 @@
 "use client";
 import { msToTime } from "@/lib/converters";
-import { SpotifyResponse } from "@/types/Spotify";
+import { SpotifyResponse } from "@/types/spotify";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { ProgressBar } from "./ProgressBar";
 import { motion } from "framer-motion";
 import { MarqueeBounce } from "../core/MarqueeBounce";
+import gsap from "gsap"
 
 interface SpotifyCardProps {
   data: SpotifyResponse;
@@ -23,6 +24,7 @@ export const SpotifyCard = ({ data, onSongFinish }: SpotifyCardProps) => {
   const [maxTitleWidth, setMaxTitleWidth] = useState<number>(0);
   const titleRef = useRef<HTMLDivElement>(null);
   const textWidthRef = useRef<HTMLDivElement>(null);
+  const spotifyCardRef = useRef<HTMLDivElement>(null);
 
   const albumCover = songData.album.cover;
   const artists = songData.artists;
@@ -63,21 +65,21 @@ export const SpotifyCard = ({ data, onSongFinish }: SpotifyCardProps) => {
   }, [songData.name]);
 
   useEffect(() => {
-     const updateTextWidth = () => {
-       if (textWidthRef.current) {
-         setTextWidth(textWidthRef.current.clientWidth);
-       }
-     };
+    const updateTextWidth = () => {
+      if (textWidthRef.current) {
+        setTextWidth(textWidthRef.current.clientWidth);
+      }
+    };
 
-     updateTextWidth();
-     window.addEventListener("resize", updateTextWidth);
-      return () => {
-        window.removeEventListener("resize", updateTextWidth);
-      };
+    updateTextWidth();
+    window.addEventListener("resize", updateTextWidth);
+    return () => {
+      window.removeEventListener("resize", updateTextWidth);
+    };
   }, [])
 
   return (
-    <motion.section className="bg-zinc-900/65 border border-zinc-900/95 rounded-md p-4 shadow-inner space-y-4">
+    <motion.section className="bg-zinc-950 border border-zinc-800 rounded-md p-4 shadow-inner space-y-4 w-full " ref={spotifyCardRef}>
       <div className="flex gap-2">
         <Image src={"/spotify.svg"} alt="Spotify logo" width={20} height={20} />
         <p className="max-w-prose text-sm font-semibold">
@@ -102,7 +104,7 @@ export const SpotifyCard = ({ data, onSongFinish }: SpotifyCardProps) => {
                   alt="Excplicit song"
                   width={20}
                   height={20}
-                  className="z-10"
+                  className="z-10 bg-zinc-950"
                 />
               ) : (
                 <></>

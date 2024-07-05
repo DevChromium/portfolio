@@ -1,5 +1,5 @@
 import { getNowPlaying } from "@/lib/spotify";
-import { SpotifyResponse } from "@/types/Spotify";
+import { SpotifyResponse } from "@/types/spotify";
 import { unstable_noStore } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 

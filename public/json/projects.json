@@ -1,0 +1,39 @@
+[
+    {
+        "url": "https://wynntils.com",
+        "title": "Wynntils Website",
+        "description": "Wynntils is a quality of life mod for the popular Minecraft MMORPG Wynncraft.",
+        "techStack": [
+            {
+                "icon": "devicon-react-plain",
+                "name": "React",
+                "color": "#61dbfb"
+            },
+            {
+                "icon": "devicon-laravel-plain",
+                "name": "Laravel",
+                "color": "#f05340"
+            },
+            {
+                "icon": "devicon-tailwindcss-plain",
+                "name": "Tailwind CSS",
+                "color": "#38BDF8"
+            },
+            {
+                "icon": "devicon-mongodb-plain",
+                "name": "Mongo DB",
+                "color": "#00ed64"
+            },
+            {
+                "icon": "devicon-typescript-plain",
+                "name": "Typescript",
+                "color": "#2d79c7"
+            },
+            {
+                "icon": "devicon-php-plain",
+                "name": "PHP",
+                "color": "#787cb4"
+            }
+        ]
+    }
+]
