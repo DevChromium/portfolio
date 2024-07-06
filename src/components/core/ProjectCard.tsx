@@ -38,7 +38,7 @@ export default function ProjectCard({ url, title, description, techStack }: Proj
   )
 }
 
-function CodeIcon(props) {
+function CodeIcon(props: any) {
   return (
     <svg
       {...props}
