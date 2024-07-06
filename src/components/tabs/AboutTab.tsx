@@ -1,5 +1,5 @@
 import { getMyAge } from "@/lib/utils";
-import { Card, CardHeader, CardTitle, CardDescription } from "../ui/card";
+import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/Card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCode, faDatabase, faGamepad, faPaintBrush } from "@fortawesome/free-solid-svg-icons";
 

@@ -1,5 +1,5 @@
-import ProjectCard from "../core/ProjectCard";
-import data from "../../../public/json/projects.json"
+import ProjectCard from "@/components/core/ProjectCard";
+import data from "../../../public/json/projects.json" // Get data from CMS
 import { Project } from "@/types/globals";
 
 

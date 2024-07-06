@@ -1,17 +1,15 @@
-import { Card } from "@/components/ui/card"
-import { cn } from "@/lib/utils"
+import { Card } from "@/components/ui/Card"
 import { Technology } from "@/types/globals"
-import { Button } from "../ui/button"
+import { Button } from "@/components/ui/button"
 
 interface ProjectCardProps {
-    url: string,
-    title: string
-    description: string
-    techStack: Technology[]
+  url: string,
+  title: string
+  description: string
+  techStack: Technology[]
 }
 
-
-export default function ProjectCard({url, title, description, techStack}: ProjectCardProps) {
+export default function ProjectCard({ url, title, description, techStack }: ProjectCardProps) {
   return (
     <Card className="w-full max-w-md p-6 grid gap-6">
       <div className="flex items-center gap-4">
@@ -26,16 +24,16 @@ export default function ProjectCard({url, title, description, techStack}: Projec
       <div className="grid gap-2">
         <div className="font-semibold">Technologies Used:</div>
         <ul>
-            {techStack.map((technology, index) => <li key={`${technology.name}-${index}`} className="flex gap-2 items-center"><i className={technology.icon} style={{ color: technology.color }} /> {technology.name}</li>)}
+          {techStack.map((technology, index) => <li key={`${technology.name}-${index}`} className="flex gap-2 items-center"><i className={technology.icon} style={{ color: technology.color }} /> {technology.name}</li>)}
         </ul>
       </div>
-     
-              <a href={url} target="_blank">
-                <Button variant="outline" className="w-full">
-                    View Project
-                </Button>
-              </a>
-            
+
+      <a href={url} target="_blank" className="mt-auto">
+        <Button variant="outline" className="w-full">
+          View Project
+        </Button>
+      </a>
+
     </Card>
   )
 }

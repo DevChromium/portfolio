@@ -4,11 +4,12 @@ import { SpotifyInfo } from "@/components/ui/SpotifyInfo";
 import { Calendar, Mail } from "lucide-react"
 import GradientBox from "@/components/core/GradientBox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faDiscord, faGithub, faLinkedin, faTwitter, faXTwitter } from "@fortawesome/free-brands-svg-icons";
+import { aGithub, faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
 import AboutTab from "@/components/tabs/AboutTab";
 import SkillsTab from "@/components/tabs/SkillsTab";
 import ProjectsTab from "@/components/tabs/ProjectsTab"
+import { faMailBulk } from "@fortawesome/free-solid-svg-icons";
 
 export default async function Home() {
   return (
@@ -55,10 +56,8 @@ export default async function Home() {
           </div>
 
           <div className="mt-auto flex gap-4 text-zinc-50 items-center">
-            <a href="" className="h-6 w-6 flex items-center hover:text-pink-600 transition-colors duration-100 ease-in-out"><FontAwesomeIcon icon={faDiscord}/></a>
-            <a href="" className="h-6 w-6 flex items-center hover:text-pink-600 transition-colors duration-100 ease-in-out"><FontAwesomeIcon icon={faXTwitter}/></a>
-            <a href="" className="h-6 w-6 flex items-center hover:text-pink-600 transition-colors duration-100 ease-in-out"><FontAwesomeIcon icon={faLinkedin}/></a>
-            <a href="" className="h-6 w-6 flex items-center hover:text-pink-600 transition-colors duration-100 ease-in-out"><FontAwesomeIcon icon={faGithub}/></a>
+            <a href="https://github.com/DevChromium" target="_blank" className="h-6 w-6 flex items-center hover:text-pink-600 transition-colors duration-100 ease-in-out"><FontAwesomeIcon icon={faGithub}/></a>
+            <a href="mailto:contact@devchromium.work" className="h-6 w-6 flex items-center hover:text-pink-600 transition-colors duration-100 ease-in-out"><FontAwesomeIcon icon={faMailBulk}/></a>
           </div>
         </section>
 
