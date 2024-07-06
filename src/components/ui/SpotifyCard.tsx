@@ -1,6 +1,6 @@
 "use client";
 import { msToTime } from "@/lib/converters";
-import { SpotifyResponse } from "@/types/spotify";
+import { SpotifyResponse } from "@/types/Spotify";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { ProgressBar } from "./ProgressBar";
