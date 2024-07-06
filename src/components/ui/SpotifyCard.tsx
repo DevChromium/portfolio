@@ -148,7 +148,7 @@ export const SpotifyCard = ({ data, onSongFinish }: SpotifyCardProps) => {
         <p className="text-sm">{msToTime(songProgress)}</p>
         <ProgressBar
           value={(songProgress / songData.duration) * 100}
-          className="bg-gradient-to-r from-pink-600 to-amber-500"
+          className="bg-gradient-to-tr from-pink-600 via-pink-500 to-fuchsia-400"
         />
         <p className="text-sm">{msToTime(songData.duration)}</p>
       </div>

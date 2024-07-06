@@ -15,7 +15,7 @@ export default function SkillsTab() {
     <div className="prose space-y-8 py-4">
       <div className="space-y-4">
         <h1 className="text-3xl font-bold">Skills</h1>
-        <div className="w-[100px] rounded-lg bg-gradient-to-tr from-pink-600 to-amber-500 px-7 py-1"></div>
+        <div className="w-[100px] rounded-lg bg-gradient-to-tr from-pink-600 via-pink-500 to-fuchsia-400 px-7 py-1"></div>
         {Object.keys(skillList).map((key) => (
           <div key={key} className="space-y-4">
             <h2 className="text-xl font-bold capitalize">{key}</h2>

@@ -9,7 +9,7 @@ export default function ProjectsTab() {
     <div className="prose space-y-8 py-4">
       <div className="space-y-4">
         <h1 className="text-3xl font-bold">Projects</h1>
-        <div className="w-[100px] rounded-lg bg-gradient-to-tr from-pink-600 to-amber-500 px-7 py-1"></div>
+        <div className="w-[100px] rounded-lg bg-gradient-to-tr from-pink-600 via-pink-500 to-fuchsia-400 px-7 py-1"></div>
       </div>
 
       <div className="flex gap-4">
