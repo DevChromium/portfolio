@@ -40,7 +40,7 @@ export default async function Home() {
                 </GradientBox>
                 <div className="flex flex-col">
                     <span className="text-zinc-400 uppercase">Email</span>
-                    <p>lucaspauwels@outlook.com</p>
+                    <p>contact@devchromium.work</p>
                 </div>
             </div>
 
