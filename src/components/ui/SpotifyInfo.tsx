@@ -5,7 +5,7 @@ import { useState } from "react";
 import useSWR from "swr";
 import { Alert, AlertTitle, AlertDescription } from "./Alert";
 
-import {XCircle, Loader, VolumeX} from "lucide-react"
+import { XCircle, Loader, VolumeX } from "lucide-react";
 
 export function SpotifyInfo() {
   const { data, error, mutate } = useSWR("/api/spotify", (url) =>
@@ -13,7 +13,7 @@ export function SpotifyInfo() {
       .then((r) => r.json())
       .then((data) => {
         return data;
-      })
+      }),
   );
 
   const handleSongFinish = () => {
@@ -23,25 +23,39 @@ export function SpotifyInfo() {
   if (error) {
     return (
       <Alert>
-        <AlertTitle className="flex gap-2 items-center"><XCircle /> Oh no!</AlertTitle>
-        <AlertDescription>Something went wrong fetching the Spotify data.</AlertDescription>
+        <AlertTitle className="flex items-center gap-2">
+          <XCircle /> Oh no!
+        </AlertTitle>
+        <AlertDescription>
+          Something went wrong fetching the Spotify data.
+        </AlertDescription>
       </Alert>
     );
   }
 
   if (!data) {
-    return <Alert>
-    <AlertDescription className="flex gap-2 items-center"><Loader /> Loading...</AlertDescription>
-  </Alert>
+    return (
+      <Alert>
+        <AlertDescription className="flex items-center gap-2">
+          <Loader /> Loading...
+        </AlertDescription>
+      </Alert>
+    );
   }
 
   const currentSongData = data;
 
   if (!currentSongData.is_playing)
-    return <Alert>
-      <AlertTitle className="flex gap-2 items-center"><VolumeX /> It&apos;s quiet around here...</AlertTitle>
-      <AlertDescription>I am currently not listening to Spotify</AlertDescription>
-    </Alert>;
+    return (
+      <Alert>
+        <AlertTitle className="flex items-center gap-2">
+          <VolumeX /> It&apos;s quiet around here...
+        </AlertTitle>
+        <AlertDescription>
+          I am currently not listening to Spotify
+        </AlertDescription>
+      </Alert>
+    );
 
   return (
     <>

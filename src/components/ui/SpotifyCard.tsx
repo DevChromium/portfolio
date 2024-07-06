@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { ProgressBar } from "./ProgressBar";
 import { motion } from "framer-motion";
 import { MarqueeBounce } from "../core/MarqueeBounce";
-import gsap from "gsap"
+import gsap from "gsap";
 
 interface SpotifyCardProps {
   data: SpotifyResponse;
@@ -17,7 +17,7 @@ export const SpotifyCard = ({ data, onSongFinish }: SpotifyCardProps) => {
   const [songData, _] = useState(data);
   const [songProgress, setSongProgress] = useState(songData.progress);
   const [isFinished, setIsFinished] = useState(
-    songProgress === songData.duration
+    songProgress === songData.duration,
   );
 
   const [textWidth, setTextWidth] = useState<number>(0);
@@ -76,10 +76,13 @@ export const SpotifyCard = ({ data, onSongFinish }: SpotifyCardProps) => {
     return () => {
       window.removeEventListener("resize", updateTextWidth);
     };
-  }, [])
+  }, []);
 
   return (
-    <motion.section className="bg-zinc-950 border border-zinc-800 rounded-md p-4 shadow-inner space-y-4 w-full " ref={spotifyCardRef}>
+    <motion.section
+      className="w-full space-y-4 rounded-md border border-zinc-200 bg-white p-4 shadow-inner dark:border-zinc-800 dark:bg-zinc-950"
+      ref={spotifyCardRef}
+    >
       <div className="flex gap-2">
         <Image src={"/spotify.svg"} alt="Spotify logo" width={20} height={20} />
         <p className="max-w-prose text-sm font-semibold">
@@ -87,7 +90,7 @@ export const SpotifyCard = ({ data, onSongFinish }: SpotifyCardProps) => {
         </p>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-4">
+      <div className="flex flex-col gap-4 lg:flex-row">
         <Image
           src={albumCover}
           alt={`Cover of album: ${songData.album.name}`}
@@ -97,14 +100,14 @@ export const SpotifyCard = ({ data, onSongFinish }: SpotifyCardProps) => {
         />
         <div className="w-full overflow-hidden">
           <section ref={titleRef}>
-            <div className="text-md font-bold inline-flex items-center gap-2">
+            <div className="text-md inline-flex items-center gap-2 font-bold">
               {songData.explicit ? (
                 <Image
                   src={"/explicit.svg"}
                   alt="Excplicit song"
                   width={20}
                   height={20}
-                  className="z-10 bg-zinc-950"
+                  className="z-10 rounded-md bg-zinc-950"
                 />
               ) : (
                 <></>
@@ -141,11 +144,11 @@ export const SpotifyCard = ({ data, onSongFinish }: SpotifyCardProps) => {
           </section>
         </div>
       </div>
-      <div className="flex gap-2 items-center">
+      <div className="flex items-center gap-2">
         <p className="text-sm">{msToTime(songProgress)}</p>
         <ProgressBar
           value={(songProgress / songData.duration) * 100}
-          className="bg-[#1DB954]"
+          className="bg-gradient-to-r from-pink-600 to-amber-500"
         />
         <p className="text-sm">{msToTime(songData.duration)}</p>
       </div>
