@@ -39,7 +39,7 @@ export function SpotifyInfo() {
 
   if (!currentSongData.is_playing)
     return <Alert>
-      <AlertTitle className="flex gap-2 items-center"><VolumeX /> It's quiet around here...</AlertTitle>
+      <AlertTitle className="flex gap-2 items-center"><VolumeX /> It&apos;s quiet around here...</AlertTitle>
       <AlertDescription>I am currently not listening to Spotify</AlertDescription>
     </Alert>;
 

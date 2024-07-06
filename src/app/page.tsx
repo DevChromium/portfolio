@@ -4,7 +4,7 @@ import { SpotifyInfo } from "@/components/ui/SpotifyInfo";
 import { Calendar, Mail } from "lucide-react"
 import GradientBox from "@/components/core/GradientBox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { aGithub, faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
 import AboutTab from "@/components/tabs/AboutTab";
 import SkillsTab from "@/components/tabs/SkillsTab";
