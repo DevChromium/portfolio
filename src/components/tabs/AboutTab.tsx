@@ -52,7 +52,7 @@ export default function AboutTab() {
       </div>
       <div className="space-y-4">
         <h2 className="text-3xl font-bold">What I&apos;m doing</h2>
-        <div className="grid grid-cols-2 grid-rows-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-2 gap-8 max-w-4xl">
           <Card className="grid w-full gap-6 p-6">
             <div className="flex items-center gap-4">
               <div className="flex aspect-square w-12 items-center justify-center rounded-md bg-zinc-950 dark:bg-zinc-100">

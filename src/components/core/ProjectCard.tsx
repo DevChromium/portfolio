@@ -1,9 +1,11 @@
 import { Card } from "@/components/ui/Card";
 import { Technology } from "@/types/globals";
 import { Button } from "@/components/ui/button";
+import GradientBox from "./GradientBox";
 
 interface ProjectCardProps {
   url: string;
+  type: string;
   title: string;
   description: string;
   techStack: Technology[];
@@ -11,6 +13,7 @@ interface ProjectCardProps {
 
 export default function ProjectCard({
   url,
+  type,
   title,
   description,
   techStack,
@@ -21,7 +24,10 @@ export default function ProjectCard({
         <div className="flex aspect-square w-12 items-center justify-center rounded-md bg-zinc-950 dark:bg-zinc-100">
           <CodeIcon className="h-6 w-6 text-zinc-100 dark:text-zinc-950" />
         </div>
-        <h3 className="text-xl font-semibold">{title}</h3>
+        <div>
+          <h3 className="text-xl font-semibold">{title}</h3>
+          <span className="text-sm text-winc-700 dark:text-zinc-400">{type}</span>
+        </div>
       </div>
       <div className="text-muted-foreground">{description}</div>
       <div className="grid gap-2">

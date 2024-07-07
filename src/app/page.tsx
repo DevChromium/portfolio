@@ -4,7 +4,7 @@ import { SpotifyInfo } from "@/components/ui/SpotifyInfo";
 import { Calendar, Mail } from "lucide-react";
 import GradientBox from "@/components/core/GradientBox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faDiscord, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
 import AboutTab from "@/components/tabs/AboutTab";
 import SkillsTab from "@/components/tabs/SkillsTab";
@@ -13,8 +13,8 @@ import { faMailBulk } from "@fortawesome/free-solid-svg-icons";
 
 export default async function Home() {
   return (
-    <main className="m-8 grid h-full grid-cols-1 items-stretch justify-around justify-items-center gap-8 text-zinc-950 sm:grid-cols-4 dark:text-zinc-100">
-      <section className="col-span-1 flex h-full w-full flex-col items-center gap-8 rounded-md border border-zinc-200 bg-white p-8 dark:border-zinc-800 dark:bg-zinc-900/40">
+    <main className="m-8 flex h-full flex-col items-stretch justify-around justify-items-center gap-8 text-zinc-950 lg:flex-row dark:text-zinc-100">
+      <section className="flex h-screen w-full flex-col items-center gap-8 rounded-md border border-zinc-200 bg-white p-8 md:max-w-md dark:border-zinc-800 dark:bg-zinc-900/40">
         <div className="flex flex-col items-center gap-4">
           <Image
             src="/img/headshot.jpg"
@@ -36,6 +36,16 @@ export default async function Home() {
         <div className="w-full space-y-6">
           <div className="flex w-full flex-col gap-6 md:flex-row">
             <GradientBox className="p-4">
+              <Calendar />
+            </GradientBox>
+            <div className="flex flex-col">
+              <span className="uppercase text-zinc-400">Birthday</span>
+              <p>March 22nd, 2002</p>
+            </div>
+          </div>
+
+          <div className="flex w-full flex-col gap-6 md:flex-row">
+            <GradientBox className="p-4">
               <Mail />
             </GradientBox>
             <div className="flex flex-col">
@@ -46,11 +56,11 @@ export default async function Home() {
 
           <div className="flex w-full flex-col gap-6 md:flex-row">
             <GradientBox className="p-4">
-              <Calendar />
+              <FontAwesomeIcon icon={faDiscord} className="h-6 w-6" />
             </GradientBox>
             <div className="flex flex-col">
-              <span className="uppercase text-zinc-400">Birthday</span>
-              <p>March 22nd, 2002</p>
+              <span className="uppercase text-zinc-400">Discord</span>
+              <p>devchromium</p>
             </div>
           </div>
         </div>
@@ -72,7 +82,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="col-span-3 h-full w-full gap-8 rounded-md border border-zinc-200 bg-white p-8 dark:border-zinc-800 dark:bg-zinc-900/40">
+      <section className="h-full w-full flex-grow gap-8 rounded-md border border-zinc-200 bg-white p-8 xl:col-span-3 dark:border-zinc-800 dark:bg-zinc-900/40">
         <Tabs defaultValue="about">
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="about" className="selected:bg-zinc-950">

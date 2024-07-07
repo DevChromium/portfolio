@@ -1,7 +1,8 @@
 [
     {
         "url": "https://github.com/DevChromium/portfolio",
-        "title": "This Website",
+        "type": "Website",
+        "title": "My portfolio",
         "description": "My own personal portfolio, which you are seeing right in front of you!",
         "techStack": [
             {
@@ -23,7 +24,8 @@
     },
     {
         "url": "https://wynntils.com",
-        "title": "Wynntils Website",
+        "title": "Wynntils",
+        "type": "Website",
         "description": "Wynntils is a quality of life mod for the popular Minecraft MMORPG Wynncraft.",
         "techStack": [
             {

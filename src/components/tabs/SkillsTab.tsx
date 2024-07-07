@@ -19,8 +19,7 @@ export default function SkillsTab() {
         {Object.keys(skillList).map((key) => (
           <div key={key} className="space-y-4">
             <h2 className="text-xl font-bold capitalize">{key}</h2>
-            <div className="flex gap-4">
-              {" "}
+            <div className="flex flex-wrap gap-4">
               {skillList[key].map((item, index) => (
                 <div
                   key={index}
