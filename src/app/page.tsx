@@ -14,7 +14,7 @@ import { faMailBulk } from "@fortawesome/free-solid-svg-icons";
 export default async function Home() {
   return (
     <main className="m-8 flex h-full flex-col items-stretch justify-around justify-items-center gap-8 text-zinc-950 lg:flex-row dark:text-zinc-100">
-      <section className="flex h-screen w-full flex-col items-center gap-8 rounded-md border border-zinc-200 bg-white p-8 md:max-w-md dark:border-zinc-800 dark:bg-zinc-900/40">
+      <section className="flex h-full w-full flex-col items-center gap-8 rounded-md border border-zinc-200 bg-white p-8 md:max-w-md dark:border-zinc-800 dark:bg-zinc-900/40">
         <div className="flex flex-col items-center gap-4">
           <Image
             src="/img/headshot.jpg"
