@@ -119,6 +119,7 @@ export class Benchy {
 			down = this.UVtoVertices(UVs.down)
 
 		const uvAttr = box.attributes.uv as BufferAttribute
+		//@ts-ignore
 		uvAttr.copyVector2sArray([
 			east[3],
 			east[2],
