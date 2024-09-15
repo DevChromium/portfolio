@@ -1,9 +1,9 @@
+"use client"
+
 import { inferModelType, RemoteImage, TextureSource } from 'skinview-utils'
 import { SkinViewer, SkinViewerOptions } from 'skinview3d'
 import { CapeLoadOptions, SkinLoadOptions } from 'skinview3d/libs/viewer'
 import { CanvasTexture, Group, NearestFilter, Vector3 } from 'three'
-import { BenchData } from '../types/benchy'
-import { Benchy } from '../lib/benchy'
 
 declare module 'skinview3d' {
 	export interface PlayerObject {

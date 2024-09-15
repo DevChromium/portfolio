@@ -7,8 +7,7 @@ type ModelRendererProps = {
     capeTexture: string
     alternate: boolean
 }
-
-export const ModelRenderer = ({ capeTexture, alternate } : ModelRendererProps) => {
+ const ModelRenderer = ({ capeTexture, alternate } : ModelRendererProps) => {
 
     const skinViewer = useRef<WynntilsSkinViewer>()
     const canvas = useRef<HTMLCanvasElement>()
@@ -55,3 +54,5 @@ export const ModelRenderer = ({ capeTexture, alternate } : ModelRendererProps) =
     return <canvas ref={canvas as LegacyRef<HTMLCanvasElement>} className="rounded-md" />
 
 }
+
+export default ModelRenderer;

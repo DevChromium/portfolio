@@ -1,11 +1,13 @@
 "use client";
 
 import GradientBox from "@/components/core/GradientBox";
-import { ModelRenderer } from "@/components/core/ModelRenderer";
 import { Input } from "@/components/ui/Input";
 import { Label } from "@/components/ui/Label";
 import { toBase64 } from "@/lib/utils";
+import dynamic from "next/dynamic";
 import { ChangeEvent, useState } from "react";
+
+const ModelRenderer = dynamic(() => import("@/components/core/ModelRenderer"), { ssr: false });
 
 export default function CapeViewer() {
   const [capeTexture, setCapeTexture] = useState("");
