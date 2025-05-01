@@ -11,7 +11,7 @@ COPY . .
 RUN npm run build
 
 FROM node:23-alpine
-COPY --from=builder /app/package.json /app/package-lock.json /app/.next /app/public ./
+COPY --from=builder /app/package.json /app/package-lock.json /app/.next /app/public /app/node_modules ./
 
 EXPOSE 3000
 
