@@ -2,12 +2,10 @@ version: '3.8'
 
 services:
   nextjs:
-    build: .
+    image: chrmdev-nextjs
     container_name: portfolio
     ports:
       - "3000:3000"
     environment:
       - NODE_ENV=production
-    volumes:
-      - .:/app
     restart: unless-stopped
