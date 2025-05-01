@@ -15,4 +15,4 @@ COPY --from=builder /app/package.json /app/package-lock.json /app/.next /app/pub
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["npm","run", "start"]
